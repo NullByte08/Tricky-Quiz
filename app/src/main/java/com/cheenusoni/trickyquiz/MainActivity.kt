@@ -33,14 +33,14 @@ class MainActivity : AppCompatActivity() {
         }
 
         choice1Button.setOnClickListener {
-            updateScore(choice1Button.text.toString())
+            updateScore(answer = choice1Button.text.toString())
             questionNumber++
             updateQuestion()
             randomizeButtons()
         }
 
         choice2Button.setOnClickListener {
-            updateScore(choice2Button.text.toString())
+            updateScore(answer = choice2Button.text.toString())
             questionNumber++
             updateQuestion()
             randomizeButtons()
@@ -67,15 +67,8 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
-
-    fun startTimer(boolean: Boolean) {
-        if(boolean){
-            timer.start()
-        }
-        else{
-            timer.cancel()
-        }
-    }
+    
+    var startTimer = {boolean :Boolean -> if(boolean) timer.start() else timer.cancel()}
 
     fun updateQuestion() {
         if (questionNumber < 10) {
